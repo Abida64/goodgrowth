@@ -1,3 +1,4 @@
+//1. fetch weather
 const urlTemp =
 	"https://europe-west1-amigo-actions.cloudfunctions.net/recruitment-mock-weather-endpoint/forecast?appid=a2ef86c41a&lat=27.987850&lon=86.925026";
 
@@ -22,7 +23,7 @@ async function fetchTemperature() {
 	//temp display
 	console.log(tempConverted + "°C");
 
-	//2. inject into the DOM
+	//2. inject weather into the DOM
 	const elements = document.getElementsByClassName(
 		"PlaceSummarystyle__Summary-sc-uf3onk-0 kKcMe Placestyle__StyledPlaceSummary-sc-7yy3d-2 kKgkNU"
 	);
