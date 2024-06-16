@@ -24,10 +24,10 @@ async function fetchTemperature() {
 
 	//2. inject into the DOM next to region
 	let additionalText = document.createTextNode(", " + tempConverted + "°C");
-	let londonSpan = document.querySelector(
-		".Pillstyle__StyledPill-sc-1tc0qet-0.jpeAyR.PlaceSummarystyle__StyledPill-sc-uf3onk-1.htYDvg.region--londo"
+	let className = document.querySelector(
+		".Pillstyle__StyledPill-sc-1tc0qet-0.jpeAyR.PlaceSummarystyle__StyledPill-sc-uf3onk-1.htYDvg"
 	);
-	londonSpan.appendChild(additionalText);
+	className.appendChild(additionalText);
 }
 //call function
 fetchTemperature();
