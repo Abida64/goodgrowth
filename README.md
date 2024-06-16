@@ -24,9 +24,7 @@ I first selected the element for the region, in this case it was London. I added
 Step Three - Styling
 
 A/B testing
-Google Optimiser is one of the tools.
+Google Optimiser is a great tool for A/B testing. It's simple to use, the user can insert their code snippet and begin testing. The user can create many variations of web pages and test them against each other. The user can manipulate many elements and measure the goal of the impact - in this case, the number of bookings depending on weather displaying or not.
 
 todo:
-ifelse statement for ab testing
-research good optiminser
 write how to use
