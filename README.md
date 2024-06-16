@@ -6,28 +6,29 @@ that property’s location. Their belief is that this additional information wil
 visiting a property.
 
 ## How To Use
-
 Chrome browser snippets would be ideal, however you can run this on any browser's console.
 
-For Chrome Browser
-1. Go to the following page for National Trust - https://www.nationaltrust.org.uk/visit/warwickshire/packwood-house
-2. Right click and select "inspect". For Mac, Command+Option+i
-3. Go to "Sources"
-   ![image](https://github.com/Abida64/goodgrowth/assets/149109371/0f595614-32f4-4c36-9a84-5cfd2a02f3fc)
+Using Chrome Snippets:
+1. **Go to any property page from the [National Trust](https://www.nationaltrust.org.uk/visit/birmingham-west-midlands/birmingham-back-to-backs) site**
+3. **Right click and select "inspect". For Mac, Command+Option+i. Ensure you are in the test page, by adding ?test=1 to the end of the URL**
+4. **Go to "Sources" > more tabs (double arrow) > "Snippets" > "New Snippet" > give your new snippet a name. Copy and paste the script from the main.js file into your new snippet**
+   <img src="https://github.com/Abida64/goodgrowth/assets/149109371/f2d339e2-66ba-4e6a-9de2-dd112d9a45e1" width="700" />
+5. **Run the code snippet, either by pressing Ctrl + Enter, or clicking the button on the bottom right. You should see the current weather from the API display next to the region name:**
+   <img src="https://github.com/Abida64/goodgrowth/assets/149109371/d3c671bb-6478-4da7-809d-9aab164eee30" width="700" />
+6. **The scipt will display the current weather for any location on the property pages:**
+   <img src="https://github.com/Abida64/goodgrowth/assets/149109371/352a0279-3fdf-402d-8069-fdc5933257c1" width="700" />
 
 
 ## How It Was Built
+This script is designed to fetch the current temperature for a specific location and display the weather on the property's location. For the purposes of A/B testing, the function will run if the test parameter is present in the URL. Here's a simple overview:
 
-### Step One - Fetch the Data
-Using Postman, test the given endpoint is displaying weather data. Thunderclient, is also an option. Essentially, I did this to see how the data is structured, and that the link is functioning. Initially I got an error message "lat is not defined". Turns out the problem was, "amp;" inside the query parameters - once I deleted this the data was populating. I noticed it is a json object, and the temperature was nested inside an array.
+1. Check URL Parameter: Before doing anything, the script checks the webpage's URL for a parameter named "test". This is used to differentiate between the control and test webpages (A/B testing).
+2. Fetch Weather Data: The script retrieves weather information from Open Weather Map. It specifically fetches the temperature for a location based on the city name.
+4. Display Temperature: If the "test" parameter is found in the URL, the script fetches the weather data. Once the data is retrieved, it extracts the temperature, and then adds this information to the region element of the test webpage.
+5. User Interaction: The temperature is displayed in degrees celcius next to the relevant region on the webpage, enhancing the user's experience by providing real-time weather information.
 
-I wrote an async function to fetch the weather data from the URL - this essentially pulls the weather wherever I want it to. Initially, I logged the data into the console, just to check it is working. I noticed the weather data is very long (e.g. 10.8374743), so I used toFixed() function to round the data to 1 decimal place. I then added degrees C next to the weather.
-
-### Step Two - Inject Into the DOM
-
-
-
+In summary, this script dynamically updates a webpage with current temperature information, but only when a specific condition (presence of a test URL parameter) is met.
 ## A/B testing
-Google Optimiser is a great tool for A/B testing. It's simple to use, the user can insert their code snippet and begin testing. The user can create many variations of web pages and test them against each other. The user can manipulate many elements and measure the goal of the impact - in this case, the number of bookings depending on weather displaying or not.
+Google Optimiser is a great tool for A/B testing. It allows insertion of code snippet to create many variavtions of webpages to test against each other. It allows manipulation of many elements and to measure the goal of the impact - in this case, the number of bookings depending on weather displaying or not.
 
-The user can set a query parameter in the URL whici will enable the user switch between the control and the test. In this case the query paramter is "test=1"
+By settiong a query parameter in the URL it'll enable switching between the control and the test. In this case the query paramter is "?test=1"
