@@ -5,6 +5,14 @@ The National Trust would like to have their properties’ information pages disp
 that property’s location. Their belief is that this additional information will increase the probability of users
 visiting a property.
 
+How To Use
+
+Chrome browser would be ideal, however you can run this on any browser's console.
+
+For Chrome Browser, paste into snippet, run it,
+
+How It Was Built
+
 Step One - Fetch the Data
 Using Postman, test the given endpoint is displaying weather data. Thunderclient, is also an option. Essentially, I did this to see how the data is structured, and that the link is functioning. Initially I got an error message "lat is not defined". Turns out the problem was, "amp;" inside the query parameters - once I deleted this the data was populating. I noticed it is a json object, and the temperature was nested inside an array.
 
@@ -14,3 +22,11 @@ Step Two - Inject Into the DOM
 I first selected the element for the region, in this case it was London. I added a new element by using the createElement() function, specically a new paragraph which I stored inside a variable.
 
 Step Three - Styling
+
+A/B testing
+Google Optimiser is one of the tools.
+
+todo:
+ifelse statement for ab testing
+research good optiminser
+write how to use
