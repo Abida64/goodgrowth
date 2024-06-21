@@ -1,4 +1,3 @@
-//A/B testing, use parameter ?=test=1
 const nationalTrust = new URLSearchParams(window.location.search);
 const testParams = nationalTrust.has("test");
 
@@ -27,13 +26,20 @@ async function fetchTemperature() {
 
 	const data = await response.json();
 	//get temp from json object
+	const datetime = data.list[0].dt_txt;
 	const temp = data.list[0].main.temp;
-	//temp display
+	const feelsLike = data.list[0].main.feels_like;
+	const type = data.list[0].weather[0].description;
+	const wind = data.list[0].wind.speed;
+	//display
 	console.log(temp + "°C");
 
 	//STEP THREE. inject temp into the DOM next to region
-	let addTemp = document.createTextNode(", " + temp + "°C");
-	regionName.appendChild(addTemp);
+	let weather = document.createElement("div");
+	weather.textContent = `${type} ${temp}°C, feels like ${feelsLike}°C, wind ${wind} m/s`;
+	weather.style.fontFamily = "Arial, sans-serif";
+	weather.style.fontSize = "0.875rem";
+	regionName.parentNode.insertBefore(weather, regionName.nextSibling);
 }
 
 //A/B TESTING
